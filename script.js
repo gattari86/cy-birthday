@@ -126,7 +126,9 @@ const GIFTS = [
   { id: 'legos', name: 'Legos', limit: 1 },
   { id: 'minecraft-gift-cards', name: 'Minecraft Gift Cards', limit: 0 }, // 0 = unlimited
   { id: 'robots', name: 'Robots', limit: 1 },
-  { id: 'skateboard', name: 'Skateboard', limit: 1 }
+  { id: 'skateboard', name: 'Skateboard', limit: 1 },
+  { id: 'gaming-headset', name: 'Gaming Headset', limit: 1 },
+  { id: 'wireless-mouse', name: 'Wireless Mouse', limit: 1 }
 ];
 
 // Modal elements
