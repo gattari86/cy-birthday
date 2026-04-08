@@ -74,7 +74,7 @@ function addToCalendar() {
 }
 
 /* ========== GIFT CLAIMING (Firebase) ========== */
-const FIREBASE_URL = 'https://cy-birthday-gifts-default-rtdb.firebaseio.com/gifts';
+const FIREBASE_URL = 'https://cy-s-birthday-default-rtdb.firebaseio.com/gifts';
 
 const GIFTS = [
   { id: 'walkie-talkies', name: 'Walkie-Talkies', limit: 1 },
