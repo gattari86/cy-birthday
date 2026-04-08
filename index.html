@@ -17,6 +17,16 @@
 </head>
 <body>
 
+  <!-- ========== MUSIC PLAYER ========== -->
+  <div class="music-player" id="music-player" onclick="toggleMusic()">
+    <div class="music-rings"></div>
+    <div class="music-icon" id="music-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+    </div>
+    <div class="music-label">PLAY</div>
+  </div>
+  <audio id="party-audio" src="party-song.mp3" loop preload="none"></audio>
+
   <!-- Floating 67 background watermarks -->
   <div class="bg-67" aria-hidden="true">
     <span class="bg-67-num bg-67-top">67</span>
@@ -25,7 +35,7 @@
   </div>
 
   <!-- ========== HERO ========== -->
-  <section class="hero" id="top">
+  <section class="hero" id="hero-bg">
     <div class="hero-overlay"></div>
     <div class="hero-content" data-animate="fade-up">
       <div class="hero-badge">LEVEL 7 UNLOCKED</div>
@@ -146,6 +156,7 @@
       </div>
       <div class="gifts-intro" data-animate="fade-up">
         <p>Your presence is more than enough, but if you'd like ideas, here are a few things Cy loves right now:</p>
+        <p class="gifts-instructions">If you're planning to get something from the list, tap "I'll get this" so others know it's taken. Gift cards are always welcome -- no limit on those.</p>
       </div>
       <div class="gifts-grid" data-animate="fade-up">
         <div class="gift-card">
@@ -176,13 +187,19 @@
           <div class="gift-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="4" height="4" fill="currentColor"/><rect x="12" y="12" width="4" height="4" fill="currentColor"/><rect x="8" y="12" width="4" height="4"/><rect x="12" y="8" width="4" height="4"/></svg>
           </div>
-          <span>Minecraft</span>
+          <span>Minecraft Gift Cards</span>
         </div>
         <div class="gift-card">
           <div class="gift-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="8" rx="2"/><circle cx="10" cy="6" r="1" fill="currentColor"/><circle cx="14" cy="6" r="1" fill="currentColor"/><path d="M9 10v4"/><path d="M15 10v4"/><rect x="6" y="14" width="12" height="6" rx="2"/><path d="M9 20v2"/><path d="M15 20v2"/></svg>
           </div>
           <span>Robots</span>
+        </div>
+        <div class="gift-card">
+          <div class="gift-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="20" rx="10" ry="2"/><rect x="5" y="18" width="14" height="3" rx="1.5"/><circle cx="7" cy="21" r="1.5"/><circle cx="17" cy="21" r="1.5"/><path d="M8 18l4-16 4 16"/></svg>
+          </div>
+          <span>Skateboard</span>
         </div>
       </div>
       <div class="sizes-panel" data-animate="fade-up">
@@ -266,6 +283,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

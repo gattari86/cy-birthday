@@ -1,3 +1,46 @@
+/* ========== VANTA.JS BACKGROUND ========== */
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof VANTA !== 'undefined') {
+    VANTA.NET({
+      el: '#hero-bg',
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x00c8ff,
+      backgroundColor: 0x0a0e1a,
+      points: 8,
+      maxDistance: 22,
+      spacing: 18,
+      showDots: true
+    });
+  }
+});
+
+/* ========== MUSIC PLAYER ========== */
+const audio = document.getElementById('party-audio');
+const musicPlayer = document.getElementById('music-player');
+const musicLabel = document.querySelector('.music-label');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    audio.pause();
+    musicPlayer.classList.remove('playing');
+    musicLabel.textContent = 'PLAY';
+    document.getElementById('music-icon').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>';
+  } else {
+    audio.play();
+    musicPlayer.classList.add('playing');
+    musicLabel.textContent = 'ON';
+    document.getElementById('music-icon').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/><line x1="2" y1="2" x2="22" y2="22"/></svg>';
+  }
+  isPlaying = !isPlaying;
+}
+
 /* ========== SCROLL ANIMATIONS ========== */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -81,8 +124,9 @@ const GIFTS = [
   { id: 'basketball', name: 'Basketball', limit: 1 },
   { id: 'flute', name: 'Flute', limit: 1 },
   { id: 'legos', name: 'Legos', limit: 1 },
-  { id: 'minecraft', name: 'Minecraft', limit: 0 }, // 0 = unlimited
-  { id: 'robots', name: 'Robots', limit: 1 }
+  { id: 'minecraft-gift-cards', name: 'Minecraft Gift Cards', limit: 0 }, // 0 = unlimited
+  { id: 'robots', name: 'Robots', limit: 1 },
+  { id: 'skateboard', name: 'Skateboard', limit: 1 }
 ];
 
 // Modal elements
