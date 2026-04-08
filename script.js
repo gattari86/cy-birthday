@@ -1,7 +1,7 @@
 /* ========== VANTA.JS BACKGROUND ========== */
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof VANTA !== 'undefined') {
-    VANTA.NET({
+    VANTA.BIRDS({
       el: '#vanta-bg',
       mouseControls: true,
       touchControls: true,
@@ -10,12 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
       minWidth: 200,
       scale: 1.0,
       scaleMobile: 1.0,
-      color: 0x00c8ff,
       backgroundColor: 0x0a0e1a,
-      points: 8,
-      maxDistance: 22,
-      spacing: 18,
-      showDots: true
+      color1: 0x00c8ff,
+      color2: 0x0060cc,
+      colorMode: 'lerp',
+      birdSize: 1.2,
+      wingSpan: 20,
+      speedLimit: 4,
+      separation: 30,
+      alignment: 30,
+      cohesion: 30,
+      quantity: 3
     });
   }
 });
