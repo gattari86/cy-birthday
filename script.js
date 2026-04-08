@@ -41,6 +41,18 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
+/* ========== BACK TO TOP ========== */
+const backToTop = document.getElementById('back-to-top');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, { passive: true });
+}
+
 /* ========== SCROLL ANIMATIONS ========== */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
