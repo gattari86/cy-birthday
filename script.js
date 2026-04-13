@@ -111,8 +111,13 @@ form.addEventListener('submit', async (e) => {
       headers: { 'Accept': 'application/json' }
     });
     form.style.display = 'none';
-    document.getElementById('rsvp-success').style.display = 'block';
-    document.getElementById('rsvp-success').classList.add('visible');
+    const successEl = document.getElementById('rsvp-success');
+    successEl.style.display = 'block';
+    successEl.classList.add('visible');
+    // #64 Confetti burst — only if they said "Yes"
+    if (rsvpYes && rsvpYes.checked) {
+      fireConfetti(successEl);
+    }
   } catch {
     submitBtn.textContent = 'Send RSVP';
     submitBtn.disabled = false;
@@ -284,3 +289,85 @@ document.addEventListener('keydown', (e) => {
     closeGiftModal();
   }
 });
+
+/* ========== #22 SPLIT STAGGER — hero badge reveal ========== */
+document.addEventListener('DOMContentLoaded', () => {
+  const badge = document.getElementById('heroBadge');
+  if (badge) setTimeout(() => badge.classList.add('stagger-play'), 350);
+});
+
+/* ========== #63 COUNTER UP — days until party ========== */
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('countdownBanner');
+  if (!banner) return;
+  const numEl = banner.querySelector('.countdown-num');
+  const unitEl = document.getElementById('countdownUnit');
+  const target = new Date(numEl.dataset.targetDate + 'T00:00:00');
+  const now = new Date();
+  const diffMs = target - now;
+  const days = Math.max(0, Math.ceil(diffMs / 86400000));
+
+  if (days === 0) {
+    banner.classList.add('party-day');
+    numEl.textContent = '🎉';
+    unitEl.textContent = 'It\'s today';
+  } else {
+    unitEl.textContent = days === 1 ? 'day' : 'days';
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { numEl.textContent = days; return; }
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        let cur = 0;
+        const step = Math.max(1, Math.ceil(days / 40));
+        const tick = () => {
+          cur += step;
+          if (cur >= days) { numEl.textContent = days; return; }
+          numEl.textContent = cur;
+          requestAnimationFrame(tick);
+        };
+        tick();
+        counterObs.unobserve(banner);
+      });
+    }, { threshold: 0.35 });
+    counterObs.observe(banner);
+  }
+});
+
+/* ========== #64 CONFETTI BURST ========== */
+function fireConfetti(anchorEl) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#00c8ff', '#0080ff', '#ffd700', '#ff6b9d', '#7aeb34', '#ffffff'];
+  const root = document.createElement('div');
+  root.className = 'confetti-root';
+  document.body.appendChild(root);
+
+  // Origin: center of the success message (or viewport center fallback)
+  const rect = anchorEl ? anchorEl.getBoundingClientRect() : null;
+  const originX = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+  const originY = rect ? rect.top + 20 : window.innerHeight / 2;
+
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.left = originX + 'px';
+    piece.style.top = originY + 'px';
+    // Radial launch + gravity-ish fall
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 120 + Math.random() * 220;
+    const dx = Math.cos(angle) * radius;
+    const dy = Math.sin(angle) * radius * 0.4 + 260 + Math.random() * 180; // gravity bias
+    piece.style.setProperty('--dx', dx + 'px');
+    piece.style.setProperty('--dy', dy + 'px');
+    piece.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    piece.style.animationDelay = (Math.random() * 0.15) + 's';
+    // Vary piece shapes
+    if (Math.random() > 0.5) piece.style.borderRadius = '50%';
+    piece.style.width = (6 + Math.random() * 8) + 'px';
+    piece.style.height = (10 + Math.random() * 10) + 'px';
+    root.appendChild(piece);
+  }
+
+  setTimeout(() => root.remove(), 1900);
+}
