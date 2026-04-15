@@ -487,6 +487,94 @@ a { color: inherit; text-decoration: none; }
 }
 .gift-card.unlimited .gift-status { color: #00c8ff; }
 
+/* Minecraft-style sub note under gift name */
+.gift-card .gift-note {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #00c8ff;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+  text-transform: none;
+}
+
+/* Subsection divider for "Specific picks" */
+.gifts-subheader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 0.5rem;
+}
+.gifts-subheader-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.25), transparent);
+}
+.gifts-subheader h3 {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00c8ff;
+  margin: 0;
+  white-space: nowrap;
+}
+.gifts-subheader-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8899aa;
+  margin: 0 0 1.25rem;
+  font-style: italic;
+}
+
+/* Spec chip (color/size tag under gift name) */
+.gift-card .spec-chip {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.gift-card .spec-chip-green { color: #4ade80; background: rgba(74, 222, 128, 0.08); }
+.gift-card .spec-chip-blue { color: #60a5fa; background: rgba(96, 165, 250, 0.08); }
+
+/* Buy link button (renders above the dynamic I'll-get-this button) */
+.gift-card .gift-buy-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  min-height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00c8ff;
+  background: rgba(0, 200, 255, 0.06);
+  border: 1px solid rgba(0, 200, 255, 0.35);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.gift-card .gift-buy-link:hover,
+.gift-card .gift-buy-link:focus {
+  background: rgba(0, 200, 255, 0.14);
+  border-color: rgba(0, 200, 255, 0.7);
+  transform: translateY(-1px);
+}
+.gift-card.claimed .gift-buy-link { opacity: 0.5; }
+
 /* Sizes panel */
 .sizes-panel {
   background: rgba(255, 255, 255, 0.03);
@@ -829,6 +917,12 @@ a { color: inherit; text-decoration: none; }
   .rsvp-form { padding: 1.5rem 1rem; }
   .gifts-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .gift-card { padding: 1rem 0.75rem; }
+  .gifts-subheader { margin-top: 2rem; gap: 0.6rem; }
+  .gifts-subheader h3 { font-size: 0.8rem; letter-spacing: 0.14em; }
+  .gifts-subheader-note { font-size: 0.78rem; margin-bottom: 1rem; }
+  .gift-card .spec-chip { font-size: 0.65rem; padding: 0.2rem 0.5rem; }
+  .gift-card .gift-buy-link { font-size: 0.65rem; padding: 0.5rem 0.6rem; letter-spacing: 0.05em; }
+  .gift-card .gift-note { font-size: 0.65rem; }
 }
 
 /* ========== GIFT CLAIM MODAL ========== */

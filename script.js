@@ -146,11 +146,14 @@ const GIFTS = [
   { id: 'basketball', name: 'Basketball', limit: 1 },
   { id: 'flute', name: 'Flute', limit: 1 },
   { id: 'legos', name: 'Legos', limit: 1 },
-  { id: 'minecraft-gift-cards', name: 'Minecraft Gift Cards', limit: 0 }, // 0 = unlimited
+  { id: 'minecraft-gift-cards', name: 'Minecraft Gift Cards (Windows, not Xbox)', limit: 0 }, // 0 = unlimited
   { id: 'robots', name: 'Robots', limit: 1 },
   { id: 'skateboard', name: 'Skateboard', limit: 1 },
   { id: 'gaming-headset', name: 'Gaming Headset', limit: 1 },
-  { id: 'wireless-mouse', name: 'Wireless Mouse', limit: 1 }
+  { id: 'wireless-mouse', name: 'Wireless Mouse', limit: 1 },
+  { id: 'computer-case-green', name: 'Computer Case (Green)', limit: 1 },
+  { id: 'laptop-screen-protector', name: 'Laptop Screen Protector', limit: 1 },
+  { id: 'laptop-carrying-case', name: 'Laptop Carrying Case (Dark Blue, 15.6")', limit: 1 }
 ];
 
 // Modal elements
